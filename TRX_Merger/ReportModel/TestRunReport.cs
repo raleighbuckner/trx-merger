@@ -39,7 +39,7 @@ namespace TRX_Merger.ReportModel
                     allFailedTests = new List<UnitTestResultReport>();
                     TestClassReports.ToList().ForEach(
                         t =>
-                            allFailedTests.AddRange(t.Value.Tests.Where(r => r.Result.Outcome != "Passed").ToList())); 
+                            allFailedTests.AddRange(t.Value.Tests.Where(r => r.Result.Outcome == "Failed").ToList())); 
                 }
                 return allFailedTests;
             }

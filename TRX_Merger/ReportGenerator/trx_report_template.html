@@ -52,7 +52,7 @@
       var resultBasedPanel= "";
       var resultBasedDisplay= "";
 
-      if(@Model.Run.ResultSummary.Outcome.Equals("Completed", StringComparison.CurrentCultureIgnoreCase)){
+      if(@Model.Run.ResultSummary.Outcome.Equals("Passed", StringComparison.CurrentCultureIgnoreCase)){
         resultBasedColor = "#73a839";
         resultBasedPanel = "panel panel-success";
         resultBasedDisplay = "none";
@@ -263,7 +263,7 @@
                         <tbody>
                             @foreach (var test in testClassEntry.Value.Tests)
                             {
-                            string rowClass = test.Result.Outcome == "Passed" ? "success" : "danger";
+	                        string rowClass = test.Result.Outcome == "Passed" ? "success" : test.Result.Outcome == "Failed" ? "danger" : "info";
 
                             <tr class="@rowClass">
                                 <td id="@test.TestId" style="display:none">@test.AsJson()</td>
